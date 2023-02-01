@@ -98,8 +98,10 @@ public class JigsawAgent {
 		} catch (Throwable e) {
 			
 		}
+		try{
 		Root.openAccess(Class.forName("jdk.internal.module.IllegalAccessLogger").getDeclaredField("logger")).set(null,
 				null);
+		}catch(Throwable t){}
 		Method getMod = Class.class.getMethod("getModule");
 		Method getPack = getMod.getReturnType().getMethod("getPackages");
 		try (io.github.classgraph.ScanResult scrst = new io.github.classgraph.ClassGraph().enableClassInfo()
